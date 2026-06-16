@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Max Beitan monogram">
+  <circle cx="32" cy="32" r="31" fill="#0C0B0E"></circle>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#C2A269" stroke-width="1"></circle>
+  <text x="32" y="41.5" font-family="Georgia, &#39;Times New Roman&#39;, serif" font-style="italic" font-weight="600" font-size="25" letter-spacing="0.5" fill="#C2A269" text-anchor="middle">MB</text>
+</svg>
