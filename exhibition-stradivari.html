@@ -11,26 +11,20 @@
 <meta property="og:url" content="https://beitanmusicfoundation.org/exhibition-stradivari.html" />
 <meta property="og:image" content="https://beitanmusicfoundation.org/img/riga-bourse-stradivari-exhibit.jpg" />
 <meta name="theme-color" content="#6E1E2A" />
-
-<!-- ── Security / meta ── -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; base-uri 'self'; frame-ancestors 'none'" />
-<meta http-equiv="X-Frame-Options" content="DENY" />
-<meta name="referrer" content="strict-origin-when-cross-origin" />
-
 <link rel="icon" type="image/svg+xml" href="img/mb-monogram.svg" />
 <link rel="icon" type="image/png" sizes="48x48" href="img/favicon-48.png" />
 <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="img/favicon-180.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Playfair+Display:ital@1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Archivo:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
 <style>
   :root {
     --paper:#F3ECDF; --paper-2:#ECE2D0; --paper-3:#E6DAC4;
     --ink:#23201D; --ink-2:#6B6157; --ink-3:#928679;
-    --bordo:#6E1E2A; --bordo-2:#892532; --bordo-deep:#551722; --brass:#A9824B; --gold:#C9A86A;
+    --bordo:#6E1E2A; --bordo-2:#892532; --bordo-deep:#551722; --brass:#A9824B; --gold:#B08D57;
     --line:rgba(35,32,29,.16); --line-2:rgba(35,32,29,.08);
-    --serif:'Spectral', Georgia, serif; --sans:'Archivo', system-ui, sans-serif;
+    --serif:'Spectral', Georgia, serif; --sans:'Inter', system-ui, sans-serif;
     --maxw:1200px;
   }
 
@@ -38,7 +32,7 @@
   html[data-theme="dark"]{
     --paper:#15100E; --paper-2:#1D1714; --paper-3:#261D18;
     --ink:#F0E6D7; --ink-2:#BCAE9C; --ink-3:#8C8072;
-    --bordo:#C24350; --bordo-2:#D5505E; --brass:#C49A5C; --gold:#DCBC7E;
+    --bordo:#C24350; --bordo-2:#D5505E; --brass:#C49A5C; --gold:#D7A95B;
     --line:rgba(240,230,215,.15); --line-2:rgba(240,230,215,.07);
   }
   html[data-theme="dark"] body{ background:var(--paper); }
@@ -69,21 +63,27 @@
     transform:translateY(-50%); background:var(--brass); box-shadow:0 1px 4px rgba(0,0,0,.35); transition:transform .4s ease; }
   html[data-theme="light"] .tt-knob{ transform:translate(26px,-50%); }
 
-  /* ── BMf wordmark: HTML text (reflows on font load — no Safari svg-text clip). Consistent with the homepage mark. ── */
+  /* ── BMf wordmark: HTML text (renders Cinzel + Playfair italic). The svg <text>
+     logo files fell back to Georgia and clipped the italic f — matches the homepage mark now. ── */
   .bm-logo{ display:inline-flex; align-items:baseline; line-height:1.05; white-space:nowrap; flex:none;
-    color:#F3ECDF; transition:color .4s ease, transform .4s ease; font-size:27px; overflow:visible; }
+    color:#F3ECDF; font-size:28px; overflow:visible; transition:color .4s ease, transform .4s ease; }
   .bm-logo .bm{ font-family:'Cinzel', Georgia, serif; font-weight:600; letter-spacing:.05em; color:currentColor; }
   .bm-logo .f{ position:relative; top:.10em; font-family:'Playfair Display', Georgia, serif; font-style:italic; font-weight:400;
     font-size:1.28em; margin-left:.02em; padding:0 .42em 0 .02em; overflow:visible;
-    background:linear-gradient(135deg, var(--gold) 0%, var(--brass) 58%, #7d5a2f 100%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--brass); }
-  .bm-logo .f .dot{ position:absolute; width:.07em; height:.07em; border-radius:50%; background:var(--brass); }
+    background:linear-gradient(135deg,#DFBA73 0%,#B08D57 52%,#85642E 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:#B08D57; }
+  .bm-logo .f .dot{ position:absolute; width:.07em; height:.07em; border-radius:50%; background:#B08D57; }
   .bm-logo .f .dot.d1{ top:.04em; right:.52em; }
   .bm-logo .f .dot.d2{ top:.34em; right:.28em; }
   .brandmark:hover .bm-logo{ transform:scale(1.04); }
-  .topbar:not(.docked) .brandmark .bm-logo{ color:#F3ECDF; }
   html[data-theme="light"] .topbar.docked .brandmark .bm-logo{ color:var(--ink); }
-  footer .brandmark .bm-logo{ color:#F3ECDF; }
+  html[data-theme="dark"] .topbar.docked .brandmark .bm-logo{ color:#F3ECDF; }
+  footer .brandmark .bm-logo{ color:#F3ECDF; font-size:32px; }
+
+  /* ── Topbar entrance animation (as in the original exhibition bar) ── */
+  @keyframes barIn { from { opacity:0; transform:translateY(-14px); } to { opacity:1; transform:none; } }
+  .topbar{ animation: barIn .9s cubic-bezier(.2,.7,.2,1) .15s both; }
+  @media (prefers-reduced-motion: reduce){ .topbar{ animation:none; } }
   *, *::before, *::after { box-sizing: border-box; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: reduce){ html { scroll-behavior: auto; } }
@@ -111,13 +111,18 @@
   .topbar.docked { background: rgba(243,236,223,.98); backdrop-filter: blur(12px);
     padding: 13px 40px; box-shadow: 0 1px 0 var(--line), 0 14px 34px -22px rgba(35,32,29,.55); }
   @media (max-width: 720px){ .topbar, .topbar.docked { padding-left: 24px; padding-right: 24px; } }
-  .brandmark { display: flex; align-items: center; gap: 14px; color: var(--ink); }
+  .brandmark { display: flex; align-items: center; gap: 13px; color: var(--ink); }
   .topbar:not(.docked) .brandmark { color: var(--paper); }
-  .brandmark .bm-name { font-family: 'Cinzel', Georgia, serif; font-weight: 500; font-size: 12px;
-    letter-spacing: .24em; text-transform: uppercase; line-height: 1.32; white-space: nowrap; }
-  .brandmark .bm-name small { display: block; font-family: var(--sans); font-weight: 400; font-size: 8px;
-    letter-spacing: .36em; color: var(--gold); margin-top: 3px; }
-  @media (max-width: 540px){ .brandmark .bm-name { display: none; } }
+  .brandmark .mono { width: 38px; height: 38px; flex: none; border-radius: 50%;
+    border: 1.5px solid var(--brass); display: grid; place-items: center; transition: border-color .4s ease; }
+  .brandmark .mono .fhole { width: 18px; height: auto; display: block; overflow: visible;
+    color: var(--brass); transition: color .4s ease; }
+  .topbar:not(.docked) .brandmark .mono { border-color: var(--gold); }
+  .topbar:not(.docked) .brandmark .mono .fhole { color: var(--gold); }
+  footer .brandmark .mono { border-color: var(--gold); }
+  footer .brandmark .mono .fhole { color: var(--gold); }
+  .brandmark .bm-name { font-family: var(--sans); font-weight: 500; font-size: 12px;
+    letter-spacing: .22em; text-transform: uppercase; line-height: 1.35; }
   .topnav { display: flex; align-items: center; gap: 30px; }
   .topnav a { font-family: var(--sans); font-size: 12.5px; letter-spacing: .12em;
     text-transform: uppercase; color: inherit; position: relative; padding: 4px 0; }
@@ -152,17 +157,6 @@
   .ex-hero .facts span { display: inline-flex; align-items: center; gap: 12px; }
   .ex-hero .facts span:not(:last-child)::after { content:""; width: 5px; height: 5px; border-radius: 50%;
     background: var(--brass); margin-left: 18px; }
-
-  /* ── Hero entrance: staggered slide-up on load (matches the homepage hero motion) ── */
-  .ex-hero .reveal{ transition-duration: 1.05s; transition-timing-function: cubic-bezier(.2,.7,.2,1); }
-  .ex-hero .crumb.reveal{ transition-delay: .22s; }
-  .ex-hero h1.reveal{ transition-delay: .36s; }
-  .ex-hero .sub.reveal{ transition-delay: .56s; }
-  .ex-hero .facts.reveal{ transition-delay: .76s; }
-  /* subtle topbar drop-in */
-  @keyframes barIn { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
-  .topbar{ animation: barIn .9s cubic-bezier(.2,.7,.2,1) .15s both; }
-  @media (prefers-reduced-motion: reduce){ .topbar{ animation: none; } }
 
   /* ── Sections ── */
   .band { padding: clamp(72px, 11vh, 132px) 0; }
@@ -330,8 +324,8 @@
 
 <header class="topbar" id="topbar">
   <a class="brandmark" href="index.html" aria-label="The Beitan Music Foundation — home">
-    <span class="bm-logo" aria-hidden="true"><span class="bm">BM</span><span class="f">f<span class="dot d1"></span><span class="dot d2"></span></span></span>
-    <span class="bm-name">Beitan Music<small>Foundation</small></span>
+    <span class="bm-logo" role="img" aria-label="BM — Beitan Music Foundation"><span class="bm">BM</span><span class="f">f<span class="dot d1"></span><span class="dot d2"></span></span></span>
+    <span class="bm-name">Beitan Music<br/>Foundation</span>
   </a>
   <nav class="topnav" id="topnav">
     <a href="index.html#mission">Mission</a>
@@ -356,7 +350,7 @@
   <div class="photo"></div>
   <div class="wash"></div>
   <div class="wrap">
-    <span class="crumb reveal"><a href="index.html#exhibitions">Exhibitions</a> <span aria-hidden="true">/</span> Fine Instruments</span>
+    <span class="crumb"><a href="index.html#exhibitions">Exhibitions</a> <span aria-hidden="true">/</span> Fine Instruments</span>
     <h1 class="reveal">Stradivari · Guarneri <em>· Amati</em></h1>
     <p class="sub reveal">Legendary Italian string instruments — gathered in Latvia for the first time.</p>
     <div class="facts reveal">
@@ -528,8 +522,8 @@
   <div class="wrap">
     <div class="f-top">
       <a class="brandmark" href="index.html">
-        <span class="bm-logo" aria-hidden="true"><span class="bm">BM</span><span class="f">f<span class="dot d1"></span><span class="dot d2"></span></span></span>
-        <span class="bm-name">Beitan Music<small>Foundation</small></span>
+        <span class="bm-logo" role="img" aria-label="BM — Beitan Music Foundation"><span class="bm">BM</span><span class="f">f<span class="dot d1"></span><span class="dot d2"></span></span></span>
+        <span class="bm-name">Beitan Music<br/>Foundation</span>
       </a>
       <p class="f-tag">Promoting classical music · supporting emerging artists · bridging cultures.</p>
       <nav class="f-links">
