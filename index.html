@@ -210,8 +210,8 @@
   .hero .frame i.br{ bottom:-1px; right:-1px; border-left:0; border-top:0; }
 
   .hero .stage{ position:relative; z-index:3; }
-  .hero .crest{ display:inline-flex; font-size:80px; line-height:1.05; overflow:visible; color:#FAF8F5; margin:0 auto 30px;
-    filter:drop-shadow(0 0 36px rgba(194,130,41,.24)); animation:crestIn 1.6s var(--ease) both; }
+  .hero .crest{ display:inline-flex; font-size:58px; line-height:1.05; overflow:visible; color:#FAF8F5; margin:0 auto 24px;
+    filter:drop-shadow(0 0 32px rgba(194,130,41,.22)); animation:crestIn 1.6s var(--ease) both; }
   .footer-lockup{ font-size:34px; }
   @keyframes crestIn{ from{ opacity:0; transform:translateY(18px) scale(.94); } to{ opacity:1; transform:none; } }
   .hero .est{ margin-bottom:26px; color:#D7A95B; }
@@ -407,6 +407,61 @@
     body.menu-open{ overflow:hidden; }
     body.menu-open .topbar, body.menu-open .topbar.docked{ background:transparent; border-color:transparent; backdrop-filter:none; -webkit-backdrop-filter:none; }
     body.menu-open .navtoggle{ opacity:0; pointer-events:none; }
+  }
+
+  /* ════════════════════════════════════════════════════════════════
+     MOBILE & LIGHT-HERO FIXES (v2) — appended last so they override
+     ════════════════════════════════════════════════════════════════ */
+
+  /* 1 · Legibility: thin 200 → 300, lift muted text toward WCAG AA */
+  :root{ --ivory-mute:rgba(250,248,245,.70); --ivory-faint:rgba(250,248,245,.52); }
+  body{ font-weight:300; }
+  .directive-grid p,.prog p,.exh p,.founder p,.support p,
+  .contact .intro p,.give-row .v,.f-tag{ font-weight:300; }
+
+  /* 2 · Mobile hero: drop the 3rd repetition of the name + cut tracking */
+  @media (max-width:760px){
+    .hero{ min-height:92svh; padding:104px 22px 110px; }
+    /* keep the centre crest — just smaller, so it's iconic without overloading */
+    .hero .crest{ font-size:clamp(46px,13vw,62px); margin-bottom:16px; }
+    .hero .est{ font-size:9px; letter-spacing:.16em; margin-bottom:16px; }
+    .hero h1{ font-size:clamp(26px,7vw,36px); letter-spacing:.10em; text-indent:.10em; line-height:1.14; }
+    .hero .tag{ font-size:15.5px; margin-top:20px; }
+    .hero .cta{ margin-top:30px; }
+  }
+
+  /* 3 · Light-theme hero: remove the foggy wash + blurry stacked shadows;
+     make the ghost button readable (it currently vanishes) */
+  /* hero stays cinematic-dark in light theme too — so DON'T fade it to ivory
+     (that was the foggy wash). Keep the photo dark to the bottom, give the
+     keyword ledger a solid dark backing + light text, then a clean cut to the
+     ivory section below. */
+  html[data-theme="light"] .hero .fade{ display:none; }
+  html[data-theme="light"] .hero .ledger{
+    background:linear-gradient(180deg, transparent, rgba(8,5,4,.88));
+    border-top-color:rgba(176,141,87,.30);
+  }
+  html[data-theme="light"] .hero .ledger .lw{ color:rgba(250,248,245,.66); }
+  html[data-theme="light"] .hero .stage::before{
+    background:radial-gradient(ellipse 62% 56% at 50% 46%, rgba(10,6,3,.32) 0%, rgba(10,6,3,.15) 54%, transparent 76%);
+  }
+  html[data-theme="light"] .hero h1{
+    text-shadow:0 1px 2px rgba(12,7,3,.55), 0 3px 16px rgba(12,7,3,.45);
+  }
+  html[data-theme="light"] .hero .est,
+  html[data-theme="light"] .hero .tag{
+    text-shadow:0 1px 6px rgba(12,7,3,.5);
+  }
+  html[data-theme="light"] .hero .btn-ghost{
+    color:#FAF8F5; border-color:rgba(255,255,255,.72);
+    background:rgba(10,7,5,.30); backdrop-filter:blur(2px);
+  }
+
+  /* 4 · Tighten the big vertical gaps on mobile */
+  @media (max-width:760px){
+    .band{ padding:62px 0; }
+    .mission .lead{ margin-bottom:38px; }
+    .sec-head{ margin-bottom:34px; }
   }
 </style>
 </head>
