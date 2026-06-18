@@ -6,6 +6,18 @@
 <title>The Beitan Music Foundation — Lugano · Milano</title>
 <meta name="description" content="The Beitan Music Foundation (BMF) — promoting classical music, championing emerging artists, and stewarding fine Italian instruments. Founded by cellist Max Beitan. Lugano · Milano." />
 
+<!-- ── Open Graph / Twitter ── -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="The Beitan Music Foundation — Lugano · Milano" />
+<meta property="og:description" content="Promoting classical music, championing emerging artists, and stewarding fine Italian instruments. Founded by cellist Max Beitan." />
+<meta property="og:url" content="https://beitanmusicfoundation.org" />
+<meta property="og:image" content="https://beitanmusicfoundation.org/img/og-foundation.jpg" />
+<meta property="og:image:alt" content="The Beitan Music Foundation" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Beitan Music Foundation" />
+<meta name="twitter:description" content="Promoting classical music · championing emerging artists · stewarding fine Italian instruments." />
+<meta name="twitter:image" content="https://beitanmusicfoundation.org/img/og-foundation.jpg" />
+
 <!-- ── Security / meta ── -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'self' https://api.web3forms.com; form-action https://api.web3forms.com; base-uri 'self'; frame-ancestors 'none'" />
 <meta http-equiv="X-Frame-Options" content="DENY" />
@@ -25,7 +37,8 @@
   "description": "A cultural foundation promoting classical music, championing emerging artists, and stewarding fine Italian instruments.",
   "areaServed": ["Latvia", "Switzerland", "Italy"],
   "email": "info@beitanmusicfoundation.org",
-  "address": { "@type": "PostalAddress", "streetAddress": "Krišjāņa Barona iela 32", "addressLocality": "Rīga", "postalCode": "LV-1011", "addressCountry": "LV" }
+  "address": { "@type": "PostalAddress", "streetAddress": "Krišjāņa Barona iela 32", "addressLocality": "Rīga", "postalCode": "LV-1011", "addressCountry": "LV" },
+  "sameAs": ["https://maxbeitan.com"]
 }
 </script>
 <meta name="theme-color" content="#0A0705" />
@@ -269,7 +282,8 @@
   .prog{ padding:46px 38px 52px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:var(--lux); }
   .prog:hover{ background:rgba(176,141,87,.045); }
   .prog .pico{ width:34px; height:34px; color:var(--gold); margin-bottom:26px; }
-  .prog .pno{ font-family:var(--display); font-size:12px; letter-spacing:.2em; color:var(--gold); opacity:.7; }
+  .prog .pno{ display:block; font-family:var(--display); font-size:42px; font-weight:500; line-height:1; letter-spacing:.02em; color:var(--gold); }
+  .prog .pno::after{ content:""; display:block; width:38px; height:1px; background:var(--gold); opacity:.5; margin:14px 0 2px; }
   .prog h3{ font-family:var(--display); font-weight:500; font-size:21px; letter-spacing:.06em; margin:14px 0 16px; line-height:1.3; color:var(--ivory); }
   .prog p{ color:var(--ivory-mute); font-weight:200; font-size:15px; line-height:1.9; }
   @media (max-width:860px){ .prog-grid{ grid-template-columns:1fr; } }
@@ -529,20 +543,17 @@
     <div class="sec-head reveal"><span class="no">I</span><span class="sec-title">Programmes &amp; Initiatives</span><span class="rule"></span></div>
     <div class="prog-grid reveal stagger">
       <article class="prog">
-        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M12 2v20M12 2c-2.4 2-7 2-9 1.6v13C5 18 9.6 18 12 20M12 2c2.4 2 7 2 9 1.6v13C19 18 14.4 18 12 20"/></svg>
-        <span class="pno">i.</span>
+        <span class="pno">I</span>
         <h3>Artistic Support</h3>
         <p>Robust platforms and development for young musicians, composers and artists — helping them launch and sustain international careers.</p>
       </article>
       <article class="prog">
-        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c3 3 3 15.4 0 18.4M12 2.8c-3 3-3 15.4 0 18.4"/></svg>
-        <span class="pno">ii.</span>
+        <span class="pno">II</span>
         <h3>Multicultural Events</h3>
         <p>Music, poetry and art combined to build community and cross-cultural communication through partnerships with leading institutions.</p>
       </article>
       <article class="prog">
-        <svg class="pico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M12 2l2.6 5.2 5.7.8-4.1 4 1 5.7L12 20.2 6.8 22.7l1-5.7-4.1-4 5.7-.8L12 2z"/></svg>
-        <span class="pno">iii.</span>
+        <span class="pno">III</span>
         <h3>Instrument Stewardship</h3>
         <p>Advocating for the appreciation of and investment in fine stringed instruments — preserving these historical treasures for future generations.</p>
       </article>
