@@ -130,7 +130,7 @@
 
   /* ── BMf wordmark: HTML text (NOT svg <text>) so it reflows when the webfont loads — Safari lays out svg text with a fallback font first and never reflows, which clipped the italic f. Matches original: ivory Cinzel BM + gold-gradient Playfair italic f + two accent dots ── */
   .bm-logo{ display:inline-flex; align-items:baseline; line-height:1.05; white-space:nowrap; flex:none;
-    color:#FAF8F5; transition:var(--lux); font-size:30px; overflow:visible; }
+    color:#FAF8F5; transition:color 0.4s ease-in-out, fill 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-text-fill-color 0.4s ease-in-out, transform 0.4s ease-in-out; font-size:30px; overflow:visible; }
   .bm-logo .bm{ font-family:var(--display); font-weight:600; letter-spacing:.05em; color:currentColor; }
   .bm-logo .f{ position:relative; top:.10em; font-family:var(--editorial); font-style:italic; font-weight:400;
     font-size:1.28em; margin-left:.02em; padding:0 .42em 0 .02em; overflow:visible;
@@ -142,8 +142,9 @@
   .brand-link:hover .bm-logo{ transform:scale(1.04); }
   /* Unified gold hover: the whole lockup — BM letters, italic f, and the brand title —
      warms to a single radiant gold (#C5A059) when the brand link is hovered. */
+  .brand-link,
   .brand-link .bm-logo,.brand-link .bm-logo .bm,.brand-link .bm-logo .f,
-  .brand-link .brand-title,.brand-link .brand-title small{ transition:color .5s var(--ease); }
+  .brand-link .brand-title,.brand-link .brand-title small{ transition:color 0.4s ease-in-out, fill 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-text-fill-color 0.4s ease-in-out; }
   .brand-link:hover .bm-logo,
   .brand-link:hover .bm-logo .bm{ color:#C5A059 !important; }
   .brand-link:hover .bm-logo .f{ background:none; -webkit-background-clip:initial; background-clip:initial;
@@ -167,6 +168,10 @@
     border-bottom:1px solid var(--line);
   }
   html[data-theme="light"] .topbar.docked{ background:rgba(250,248,245,.94); }
+  /* Mobile: pin the bar to the top so it never scrolls clumsily out of view. */
+  @media (max-width:760px){
+    .topbar{ position:fixed !important; top:0; left:0; width:100%; z-index:5000; }
+  }
   .brand-link{ display:flex; align-items:center; gap:15px; }
   .brand-title{ font-family:var(--display); font-weight:500; font-size:13.5px;
     letter-spacing:.25em; text-transform:uppercase; line-height:1.35; color:#FAF8F5; }
@@ -447,7 +452,7 @@
   /* ════════════ MOBILE NAV ════════════ */
   @media (max-width:1024px){
     .topbar{ padding:0 26px; } .navtoggle{ display:block; }
-    .topnav{ position:fixed; inset:0; z-index:2000; flex-direction:column; justify-content:center; gap:12px;
+    .topnav{ position:fixed; inset:0; z-index:9999 !important; flex-direction:column; justify-content:center; gap:12px;
       background:#13235A !important; opacity:1; visibility:hidden; }
     .topnav.open{ visibility:visible; }
     html[data-theme="light"] .topnav{ background:#FAF8F5 !important; }
@@ -512,6 +517,20 @@
     background:linear-gradient(180deg, rgba(250,248,245,0) 0%, rgba(214,184,122,.34) 52%, #FAF8F5 100%);
   }
   html[data-theme="light"] .hero .stage::before{ display:none; }
+  /* Mobile light hero — on smartphone screens the soft beige fade + light vignette
+     washed the photo into a foggy haze, flattening the gold titles. Here we drop the
+     beige wash almost entirely and deepen the ambient vignette to a clean dark pool,
+     so the photo's deep-contrast shadows punch through and the gold + bone type stay
+     razor-sharp and legible. */
+  @media (max-width:760px){
+    html[data-theme="light"] .hero .vignette{
+      background:
+        radial-gradient(circle at 50% 42%, rgba(8,5,4,0) 0%, rgba(8,5,4,.24) 56%, rgba(8,5,4,.56) 100%);
+    }
+    html[data-theme="light"] .hero .fade{
+      background:linear-gradient(180deg, rgba(250,248,245,0) 0%, rgba(28,19,10,.10) 62%, #FAF8F5 100%);
+    }
+  }
   html[data-theme="light"] .hero .crest{ color:#8A6A2E; filter:drop-shadow(0 1px 3px rgba(110,79,31,.30)) drop-shadow(0 0 26px rgba(176,137,74,.30)); }
   html[data-theme="light"] .hero .crest .bm{ color:#FAF8F5; }
   /* Luminous gold lettering — a brilliant gradient that pops against the crisp
