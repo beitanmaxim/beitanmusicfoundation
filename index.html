@@ -145,6 +145,12 @@
   .brand-link,
   .brand-link .bm-logo,.brand-link .bm-logo .bm,.brand-link .bm-logo .f,
   .brand-link .brand-title,.brand-link .brand-title small{ transition:color 0.4s ease-in-out, fill 0.4s ease-in-out, opacity 0.4s ease-in-out, -webkit-text-fill-color 0.4s ease-in-out; }
+  /* Buttery-smooth 0.4s roll across the whole lockup — matches exhibition page timing.
+     Universal so color, transform and fill all blend to gold at the same cadence. */
+  .brand-link,.brand-link *,.bm-logo,.brand-title,.bm,.f{
+    transition:all 0.4s ease-in-out !important;
+    -webkit-transition:all 0.4s ease-in-out !important;
+  }
   .brand-link:hover .bm-logo,
   .brand-link:hover .bm-logo .bm{ color:#C5A059 !important; }
   .brand-link:hover .bm-logo .f{ background:none; -webkit-background-clip:initial; background-clip:initial;
@@ -470,6 +476,27 @@
     body.menu-open{ overflow:hidden; }
     body.menu-open .topbar, body.menu-open .topbar.docked{ background:transparent; border-color:transparent; backdrop-filter:none; -webkit-backdrop-filter:none; }
     body.menu-open .navtoggle{ opacity:0; pointer-events:none; }
+  }
+
+  /* ════════════ MOBILE DRAWER ISOLATION (≤767px) ════════════
+     Force the open menu into a fully opaque, full-height drawer so the
+     section content below can never bleed through or collide with links. */
+  @media (max-width:767px){
+    .topnav.open{
+      position:fixed !important;
+      top:0 !important;
+      left:0 !important;
+      width:100% !important;
+      height:100vh !important;
+      padding-top:100px !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      overflow-y:auto !important;
+      background:#13235A !important;
+      z-index:99999 !important;
+    }
+    html[data-theme="light"] .topnav.open{ background:#FAF8F5 !important; }
   }
 
   /* ════════════════════════════════════════════════════════════════

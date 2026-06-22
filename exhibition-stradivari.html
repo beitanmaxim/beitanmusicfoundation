@@ -449,6 +449,27 @@
     .navtoggle.open span:last-child { transform: translateY(-8px) rotate(-45deg); }
   }
 
+  /* ════════════ MOBILE DRAWER ISOLATION (≤767px) ════════════
+     Force the open menu into a fully opaque, full-height drawer so the
+     section content below can never bleed through or collide with links. */
+  @media (max-width: 767px){
+    .topnav.open{
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100vh !important;
+      padding-top: 100px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      overflow-y: auto !important;
+      background: #13235A !important;
+      z-index: 99999 !important;
+    }
+    html[data-theme="light"] .topnav.open{ background: #FAF8F5 !important; }
+  }
+
   @media (max-width: 760px){
     /* Shift the hero photo's horizontal anchor so the cellist and the instrument
        stay framed on tall smartphone viewports instead of being cropped out. */
