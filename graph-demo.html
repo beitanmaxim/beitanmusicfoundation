@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Graph Demo — html-graph · The Beitan Music Foundation</title>
+
+<!-- Import map: lets the bare specifier `@html-graph/html-graph` resolve to the
+     locally-vendored build (js/html-graph.min.js), so the canonical import line
+     works unchanged with no build step and no third-party runtime dependency. -->
+<script type="importmap">
+{
+  "imports": {
+    "@html-graph/html-graph": "./js/html-graph.min.js"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --carbon:#13235A; --carbon-2:#0E1B45; --ivory:#EDF1FB;
+    --gold:#C5A059; --shimmer:linear-gradient(135deg, #A37F3D 0%, #F5E2B3 50%, #8A6827 100%);
+    --line:rgba(237,241,251,.15);
+    --body:'Inter', system-ui, sans-serif; --serif:'Spectral', Georgia, serif;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; background:var(--carbon); color:var(--ivory); font-family:var(--body); font-weight:300; }
+  header{ padding:26px 40px; border-bottom:1px solid var(--line); }
+  header h1{ margin:0; font-family:var(--serif); font-weight:500; font-size:20px; letter-spacing:.06em; }
+  header p{ margin:6px 0 0; font-size:12px; letter-spacing:.04em; color:rgba(237,241,251,.6); }
+
+  /* The element html-graph renders into — give it an explicit size. */
+  #canvas{ position:relative; width:100%; height:calc(100vh - 92px); overflow:hidden; background:var(--carbon-2); }
+
+  /* Node + port styling. Nodes are absolutely positioned by the library. */
+  .node{ width:200px; padding:16px 18px; border-radius:6px; cursor:grab;
+    background:rgba(14,27,69,.92); border:1px solid var(--line);
+    box-shadow:0 14px 34px -18px rgba(0,0,0,.7); user-select:none; }
+  .node:active{ cursor:grabbing; }
+  .node .kind{ font-size:9px; letter-spacing:.28em; text-transform:uppercase; color:var(--gold); }
+  .node .title{ font-family:var(--serif); font-size:16px; margin-top:6px; line-height:1.25;
+    background:var(--shimmer); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  /* Ports: connection anchors. Small dots on each side. */
+  .port{ position:absolute; top:50%; width:10px; height:10px; border-radius:50%;
+    background:var(--gold); transform:translateY(-50%); }
+  .port.out{ right:-5px; } .port.in{ left:-5px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>html-graph — interactive demo</h1>
+  <p>Drag the nodes · scroll to zoom · drag the background to pan. Rendered from the CDN via an import map.</p>
+</header>
+
+<div id="canvas"></div>
+
+<script type="module">
+  import { CanvasBuilder } from "@html-graph/html-graph";
+
+  const element = document.getElementById("canvas");
+
+  const canvas = new CanvasBuilder(element)
+    .enableUserTransformableViewport() // зум и панорамирование
+    .enableUserDraggableNodes()        // перетаскивание нод
+    .enableBackground()                // фон
+    .build();
+
+  // ── Helper: build a node element with an inbound + outbound port ──
+  function makeNode(kind, title) {
+    const el = document.createElement("div");
+    el.className = "node";
+    el.innerHTML =
+      `<span class="port in"></span>` +
+      `<span class="port out"></span>` +
+      `<div class="kind">${kind}</div><div class="title">${title}</div>`;
+    return {
+      element: el,
+      portIn: el.querySelector(".port.in"),
+      portOut: el.querySelector(".port.out"),
+    };
+  }
+
+  // ── Sample graph: the foundation's three pillars ──
+  const nodes = [
+    { id: "n1", kind: "Pillar I",  title: "Artistic Support",       x: 80,  y: 220 },
+    { id: "n2", kind: "Pillar II", title: "Multicultural Events",   x: 380, y: 120 },
+    { id: "n3", kind: "Pillar III",title: "Instrument Stewardship", x: 380, y: 340 },
+  ];
+
+  for (const n of nodes) {
+    const built = makeNode(n.kind, n.title);
+    canvas.addNode({
+      id: n.id,
+      element: built.element,
+      x: n.x,
+      y: n.y,
+      ports: [
+        { id: `${n.id}-in`,  element: built.portIn,  direction: Math.PI }, // faces left
+        { id: `${n.id}-out`, element: built.portOut, direction: 0 },       // faces right
+      ],
+    });
+  }
+
+  canvas.addEdge({ from: "n1-out", to: "n2-in" });
+  canvas.addEdge({ from: "n1-out", to: "n3-in" });
+</script>
+</body>
+</html>
