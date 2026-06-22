@@ -7,7 +7,9 @@
       "Bash(npm i *)",
       "Read(//Users/maxbeitan/node_modules/@html-graph/html-graph/**)",
       "Read(//Users/maxbeitan/**)",
-      "Bash(python3 -c \"import re,sys; s=open\\('exhibition-stradivari.html'\\).read\\(\\); print\\('braces balanced:', s.count\\('{'\\)==s.count\\('}'\\)\\); print\\('style blocks:', s.count\\('<style>'\\), s.count\\('</style>'\\)\\)\")"
+      "Bash(python3 -c \"import re,sys; s=open\\('exhibition-stradivari.html'\\).read\\(\\); print\\('braces balanced:', s.count\\('{'\\)==s.count\\('}'\\)\\); print\\('style blocks:', s.count\\('<style>'\\), s.count\\('</style>'\\)\\)\")",
+      "Bash(grep -n \"\\\\.topbar\\\\b\\\\|\\\\.topbar{\\\\|\\\\.topbar \\\\|\\\\.topbar-actions\\\\|\\\\.topbar,\" exhibition-stradivari.html)",
+      "Bash(awk '/<style>/{f=1} f{o+=gsub\\(/{/,\"{\"\\); c+=gsub\\(/}/,\"}\"\\)} /<\\\\/style>/{f=0} END{print \"open=\"o\" close=\"c}' exhibition-stradivari.html)"
     ]
   }
 }

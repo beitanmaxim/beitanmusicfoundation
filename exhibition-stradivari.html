@@ -441,17 +441,19 @@
     html[data-theme="light"] .topnav a, html[data-theme="dark"] .topnav a,
     html[data-theme="light"] .topnav .nav-give, html[data-theme="dark"] .topnav .nav-give,
     html[data-theme="light"] .topnav .give, html[data-theme="dark"] .topnav .give{
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-      font-weight: 500 !important; text-transform: uppercase !important; letter-spacing: 0.12em !important;
-      font-size: 15px !important; }
+      font-family: var(--sans) !important; /* Inter — exact parity with index.html var(--body) */
+      font-weight: 400 !important; text-transform: uppercase !important; letter-spacing: 0.16em !important;
+      font-size: 21px !important; line-height: 1.85 !important; }
     .topnav.open { visibility: visible; }
     body.menu-open .topbar, body.menu-open .topbar.docked{ backdrop-filter:none; -webkit-backdrop-filter:none; }
-    .topbar:not(.docked) .topnav a, .topnav a { color: var(--ink); font-size: 15px; }
+    .topbar:not(.docked) .topnav a, .topnav a { color: var(--ink); font-size: 21px; }
     .navtoggle { display: inline-flex; flex-direction: column; gap: 6px; background: none; border: 0;
       cursor: pointer; padding: 8px; position: relative; z-index: 100000 !important; }
     .navtoggle span { width: 26px; height: 2px; background: currentColor; transition: transform .3s ease, opacity .3s ease; }
     .topbar:not(.docked) .navtoggle { color: var(--paper); } .topbar.docked .navtoggle { color: var(--ink); }
-    .navtoggle.open { color: var(--ink); }
+    .navtoggle.open { color: var(--ink);
+      /* Pin the active X to the invisible topbar grid — parity with index.html's close offsets */
+      position: fixed !important; top: 28px !important; right: 24px !important; z-index: 100001 !important; }
     /* Force the toggle above the full-screen overlay and keep the icon crisp in both themes */
     html[data-theme="light"] .navtoggle { color: #13235A !important; }
     html[data-theme="dark"] .navtoggle { color: #FAF8F5 !important; }
