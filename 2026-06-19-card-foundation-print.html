@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beitan Music Foundation — Business Cards · Print</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital@1&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#13235A; --bg-2:#18223A; --text:#ECE6DA; --muted:#9a8f82;
+    --gold-bright:#C5A059; --gold:#C5A059; --gold-dim:#8a6f44;
+    --ecru:#EDE7DA; --ecru-2:#F3EEE3; --ink:#241A12; --ink-muted:#6E6258;
+    --serif:'Cinzel',Georgia,serif; --ital:'Playfair Display',Georgia,serif;
+    --sans:'Montserrat',Arial,sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  @page { size: 101mm 71mm; margin: 0; }
+  html,body{ background:#5a5a5e; }
+  body{ -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: var(--sans); }
+
+  .page{ width:101mm; height:71mm; position:relative; overflow:hidden; background:#fff; page-break-after:always; break-after:page; display:flex; align-items:center; justify-content:center; }
+  .page:last-child{ page-break-after:auto; break-after:auto; }
+  .bleed{ position:absolute; top:5mm; left:5mm; width:91mm; height:61mm; overflow:hidden; }
+  .trim{ position:absolute; top:8mm; left:8mm; width:85mm; height:55mm; padding:6mm 7mm; display:flex; flex-direction:column; }
+
+  .cm{ position:absolute; background:#111; }
+  .cm.h{ width:4mm; height:.18mm; } .cm.v{ width:.18mm; height:4mm; }
+  .tl-h{ top:8mm; left:1mm; } .tl-v{ top:1mm; left:8mm; }
+  .tr-h{ top:8mm; right:1mm; } .tr-v{ top:1mm; right:8mm; }
+  .bl-h{ bottom:8mm; left:1mm; } .bl-v{ bottom:1mm; left:8mm; }
+  .br-h{ bottom:8mm; right:1mm; } .br-v{ bottom:1mm; right:8mm; }
+
+  .art-dark{ width:100%; height:100%; background: radial-gradient(130% 120% at 50% 0%, var(--bg-2) 0%, var(--bg) 60%, #0B132E 100%); }
+  .art-ecru{ width:100%; height:100%; background: radial-gradient(130% 110% at 26% 18%, var(--ecru-2) 0%, var(--ecru) 70%), var(--ecru); }
+
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .name{ font-family:var(--serif); font-weight:500; font-size:4.6mm; line-height:1.08; letter-spacing:.06em; }
+  .dark .name{ color:var(--text); } .ecru .name{ color:var(--ink); }
+  .title{ font-family:var(--sans); font-weight:300; font-size:1.5mm; letter-spacing:.28em; text-transform:uppercase; margin-top:2.2mm; }
+  .dark .title{ color:var(--gold); } .ecru .title{ color:var(--ink-muted); }
+
+  /* corner BMf monogram */
+  .mono-c{ flex-shrink:0; font-family:var(--serif); font-weight:600; font-size:5mm; line-height:1; letter-spacing:.02em; }
+  .mono-c .f{ font-family:var(--ital); font-style:italic; font-weight:400; }
+  .dark .mono-c{ color:var(--text); } .dark .mono-c .f{ color:var(--gold-bright); }
+  .ecru .mono-c{ color:var(--ink); } .ecru .mono-c .f{ color:var(--gold); }
+
+  .hr{ width:9.6mm; height:.2mm; margin:3mm 0; background:var(--gold); }
+  .ecru .hr{ background:var(--gold-dim); }
+  .spacer{ flex:1; }
+
+  .contact{ font-family:var(--sans); font-weight:400; font-size:1.75mm; letter-spacing:.05em; line-height:1.9; }
+  .dark .contact{ color:var(--text); } .ecru .contact{ color:var(--ink); }
+  .dark .contact .sub{ color:var(--gold-dim); } .ecru .contact .sub{ color:var(--ink-muted); }
+  .contact .dot{ color:var(--gold); padding:0 1mm; }
+
+  /* back — BMf monogram in golden frame */
+  .back-inner{ width:calc(100% - 14mm); height:calc(100% - 9mm); margin:auto; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.6mm; border:.3mm solid var(--gold); }
+  .ecru .back-inner{ border-color:var(--gold-dim); }
+  .mono-b{ font-family:var(--serif); font-weight:600; font-size:8mm; line-height:1; letter-spacing:.02em; }
+  .mono-b .f{ font-family:var(--ital); font-style:italic; font-weight:400; }
+  .dark .mono-b{ color:var(--text); } .dark .mono-b .f{ color:var(--gold-bright); }
+  .ecru .mono-b{ color:var(--ink); } .ecru .mono-b .f{ color:var(--gold); }
+  .mono-rule{ width:9.2mm; height:.2mm; background:var(--gold); }
+  .ecru .mono-rule{ background:var(--gold-dim); }
+  .mono-sub{ font-family:var(--sans); font-weight:300; font-size:1.2mm; letter-spacing:.32em; text-transform:uppercase; }
+  .dark .mono-sub{ color:var(--gold-dim); } .ecru .mono-sub{ color:var(--ink-muted); }
+  .founded{ font-family:var(--sans); font-weight:300; font-size:1.05mm; letter-spacing:.2em; text-transform:uppercase; margin-top:.6mm; }
+  .dark .founded{ color:var(--muted); } .ecru .founded{ color:var(--ink-muted); }
+
+  .pagelabel{ position:absolute; top:1.4mm; left:50%; transform:translateX(-50%); font-family:var(--sans); font-size:1.6mm; letter-spacing:.2em; text-transform:uppercase; color:#bbb; }
+  @media print{ .pagelabel{ display:none; } html,body{ background:#fff; } }
+</style>
+</head>
+<body>
+
+<!-- 1 · NOIR FRONT -->
+<section class="page dark">
+  <div class="pagelabel">Foundation · Noir · front</div>
+  <div class="bleed"><div class="art-dark"></div></div>
+  <div class="trim">
+    <div class="top">
+      <div>
+        <div class="name">Beitan Music<br/>Foundation</div>
+        <div class="title">Maksims Beitāns &nbsp;·&nbsp; Artistic Director</div>
+      </div>
+      <div class="mono-c">BM<span class="f">f</span></div>
+    </div>
+    <div class="hr"></div>
+    <div class="spacer"></div>
+    <div class="contact">
+      info@beitanmusicfoundation.org<span class="dot">·</span>beitanmusicfoundation.org<br/>
+      <span class="sub">Rīga · Lugano · Milano<span class="dot">·</span>Est. MMXIX</span>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+<!-- 2 · NOIR BACK -->
+<section class="page dark">
+  <div class="pagelabel">Foundation · Noir · back</div>
+  <div class="bleed"><div class="art-dark"></div></div>
+  <div class="trim">
+    <div class="back-inner">
+      <div class="mono-b">BM<span class="f">f</span></div>
+      <div class="mono-rule"></div>
+      <div class="mono-sub">The Beitan Music Foundation</div>
+      <div class="founded">Founded by Max Beitan</div>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+<!-- 3 · ECRU FRONT -->
+<section class="page ecru">
+  <div class="pagelabel">Foundation · Ecru · front</div>
+  <div class="bleed"><div class="art-ecru"></div></div>
+  <div class="trim">
+    <div class="top">
+      <div>
+        <div class="name">Beitan Music<br/>Foundation</div>
+        <div class="title">Maksims Beitāns &nbsp;·&nbsp; Artistic Director</div>
+      </div>
+      <div class="mono-c">BM<span class="f">f</span></div>
+    </div>
+    <div class="hr"></div>
+    <div class="spacer"></div>
+    <div class="contact">
+      info@beitanmusicfoundation.org<span class="dot">·</span>beitanmusicfoundation.org<br/>
+      <span class="sub">Rīga · Lugano · Milano<span class="dot">·</span>Est. MMXIX</span>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+<!-- 4 · ECRU BACK -->
+<section class="page ecru">
+  <div class="pagelabel">Foundation · Ecru · back</div>
+  <div class="bleed"><div class="art-ecru"></div></div>
+  <div class="trim">
+    <div class="back-inner">
+      <div class="mono-b">BM<span class="f">f</span></div>
+      <div class="mono-rule"></div>
+      <div class="mono-sub">The Beitan Music Foundation</div>
+      <div class="founded">Founded by Max Beitan</div>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+</body>
+</html>

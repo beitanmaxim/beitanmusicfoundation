@@ -457,8 +457,10 @@
     /* Force the toggle above the full-screen overlay and keep the icon crisp in both themes */
     html[data-theme="light"] .navtoggle { color: #13235A !important; }
     html[data-theme="dark"] .navtoggle { color: #FAF8F5 !important; }
-    .navtoggle.open span:first-child { transform: translateY(8px) rotate(45deg); }
-    .navtoggle.open span:last-child { transform: translateY(-8px) rotate(-45deg); }
+    /* Stack both lines on the exact same center so the X crosses razor-sharp and symmetrical */
+    .navtoggle.open span { position: absolute !important; top: 50% !important; left: 50% !important; width: 22px !important; height: 1px !important; margin: 0 !important; }
+    .navtoggle.open span:first-child { transform: translate(-50%, -50%) rotate(45deg) !important; }
+    .navtoggle.open span:last-child { transform: translate(-50%, -50%) rotate(-45deg) !important; }
   }
 
   /* ════════════ MOBILE DRAWER ISOLATION (≤767px) ════════════

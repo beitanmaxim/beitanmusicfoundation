@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Max Beitan — Business Cards · Print (v2, navy)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#13235A; --bg-2:#18223A; --text:#ECEFF6; --muted:#9AA6BE; --platinum:#C6CCDA;
+    --gold-bright:#C5A059; --gold:#C5A059; --gold-dim:#85642E;
+    --ecru:#EDE7DA; --ecru-2:#F3EEE3; --ink:#1B1A17; --ink-muted:#6E6A60;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Inter',Arial,sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  @page { size: 101mm 71mm; margin: 0; }
+  html,body{ background:#5a5a5e; }
+  body{ -webkit-print-color-adjust: exact; print-color-adjust: exact; font-family: var(--sans); }
+
+  .page{ width:101mm; height:71mm; position:relative; overflow:hidden; background:#fff; page-break-after:always; break-after:page; display:flex; align-items:center; justify-content:center; }
+  .page:last-child{ page-break-after:auto; break-after:auto; }
+  .bleed{ position:absolute; top:5mm; left:5mm; width:91mm; height:61mm; overflow:hidden; }
+  .trim{ position:absolute; top:8mm; left:8mm; width:85mm; height:55mm; padding:6mm 7mm; display:flex; flex-direction:column; }
+
+  .cm{ position:absolute; background:#111; }
+  .cm.h{ width:4mm; height:.18mm; } .cm.v{ width:.18mm; height:4mm; }
+  .tl-h{ top:8mm; left:1mm; } .tl-v{ top:1mm; left:8mm; }
+  .tr-h{ top:8mm; right:1mm; } .tr-v{ top:1mm; right:8mm; }
+  .bl-h{ bottom:8mm; left:1mm; } .bl-v{ bottom:1mm; left:8mm; }
+  .br-h{ bottom:8mm; right:1mm; } .br-v{ bottom:1mm; right:8mm; }
+
+  .art-dark{ width:100%; height:100%; background: radial-gradient(130% 110% at 78% 18%, var(--bg-2) 0%, var(--bg) 66%), var(--bg); }
+  .art-ecru{ width:100%; height:100%; background: radial-gradient(130% 110% at 26% 18%, var(--ecru-2) 0%, var(--ecru) 70%), var(--ecru); }
+
+  .top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .name{ font-family:var(--serif); font-weight:500; font-size:6.6mm; line-height:1; letter-spacing:.012em; }
+  .dark .name{ color:var(--gold-bright); } .ecru .name{ color:var(--gold-dim); }
+  .title{ font-family:var(--sans); font-weight:300; font-size:1.55mm; letter-spacing:.3em; text-transform:uppercase; margin-top:2.4mm; }
+  .dark .title{ color:var(--muted); } .ecru .title{ color:var(--ink-muted); }
+
+  .corner-mono{ font-family:var(--serif); font-style:italic; font-weight:500; font-size:5.2mm; line-height:1.1; letter-spacing:.01em; flex-shrink:0; padding:0 1mm 0 .4mm; }
+  .dark .corner-mono{ color:var(--gold-bright); } .ecru .corner-mono{ color:var(--gold-dim); }
+
+  .hr{ width:9.6mm; height:.2mm; margin:3.2mm 0; background:var(--gold); }
+  .ecru .hr{ background:var(--gold-dim); }
+  .spacer{ flex:1; }
+
+  .bmf{ font-family:var(--serif); font-style:italic; font-weight:400; font-size:2.5mm; letter-spacing:.01em; margin-bottom:2.2mm; }
+  .dark .bmf{ color:var(--platinum); } .ecru .bmf{ color:var(--ink); }
+
+  .contact{ font-family:var(--sans); font-weight:400; font-size:1.75mm; letter-spacing:.05em; line-height:1.85; }
+  .dark .contact{ color:var(--text); } .ecru .contact{ color:var(--ink); }
+  .dark .contact .sub{ color:var(--muted); } .ecru .contact .sub{ color:var(--ink-muted); }
+  .contact .dot{ color:var(--gold); padding:0 1mm; }
+
+  /* back — MB seal */
+  .back-inner{ width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2mm; }
+  .seal{ width:20mm; height:20mm; }
+  .mono-sub{ font-family:var(--sans); font-weight:300; font-size:1.3mm; letter-spacing:.34em; text-transform:uppercase; }
+  .dark .mono-sub{ color:var(--muted); } .ecru .mono-sub{ color:var(--ink-muted); }
+
+  .pagelabel{ position:absolute; top:1.4mm; left:50%; transform:translateX(-50%); font-family:var(--sans); font-size:1.6mm; letter-spacing:.2em; text-transform:uppercase; color:#bbb; }
+  @media print{ .pagelabel{ display:none; } html,body{ background:#fff; } }
+</style>
+</head>
+<body>
+
+<!-- 1 · NAVY FRONT -->
+<section class="page dark">
+  <div class="pagelabel">Navy · front</div>
+  <div class="bleed"><div class="art-dark"></div></div>
+  <div class="trim">
+    <div class="top">
+      <div>
+        <div class="name">Max&nbsp;Beitan</div>
+        <div class="title">Cellist &nbsp;·&nbsp; Composer &nbsp;·&nbsp; Founder</div>
+      </div>
+      <div class="corner-mono">MB</div>
+    </div>
+    <div class="hr"></div>
+    <div class="spacer"></div>
+    <div class="bmf">Beitan Music Foundation</div>
+    <div class="contact">
+      max@maxbeitan.com<span class="dot">·</span>maxbeitan.com<br/>
+      <span class="sub">+44&nbsp;7775&nbsp;365005 (WhatsApp)<span class="dot">·</span>Lugano, Switzerland</span>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+<!-- 2 · NAVY BACK -->
+<section class="page dark">
+  <div class="pagelabel">Navy · back</div>
+  <div class="bleed"><div class="art-dark"></div></div>
+  <div class="trim">
+    <div class="back-inner">
+      <svg class="seal" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="27.5" fill="none" stroke="#C5A059" stroke-width="1"/>
+        <text x="32" y="41.5" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="600" font-size="25" letter-spacing="0.5" fill="#C5A059">MB</text>
+      </svg>
+      <div class="mono-sub">Beitan Music Foundation</div>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+<!-- 3 · ECRU FRONT -->
+<section class="page ecru">
+  <div class="pagelabel">Ecru · front</div>
+  <div class="bleed"><div class="art-ecru"></div></div>
+  <div class="trim">
+    <div class="top">
+      <div>
+        <div class="name">Max&nbsp;Beitan</div>
+        <div class="title">Cellist &nbsp;·&nbsp; Composer &nbsp;·&nbsp; Founder</div>
+      </div>
+      <div class="corner-mono">MB</div>
+    </div>
+    <div class="hr"></div>
+    <div class="spacer"></div>
+    <div class="bmf">Beitan Music Foundation</div>
+    <div class="contact">
+      max@maxbeitan.com<span class="dot">·</span>maxbeitan.com<br/>
+      <span class="sub">+44&nbsp;7775&nbsp;365005 (WhatsApp)<span class="dot">·</span>Lugano, Switzerland</span>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+<!-- 4 · ECRU BACK -->
+<section class="page ecru">
+  <div class="pagelabel">Ecru · back</div>
+  <div class="bleed"><div class="art-ecru"></div></div>
+  <div class="trim">
+    <div class="back-inner">
+      <svg class="seal" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="27.5" fill="none" stroke="#85642E" stroke-width="1"/>
+        <text x="32" y="41.5" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-style="italic" font-weight="600" font-size="25" letter-spacing="0.5" fill="#85642E">MB</text>
+      </svg>
+      <div class="mono-sub">Beitan Music Foundation</div>
+    </div>
+  </div>
+  <span class="cm h tl-h"></span><span class="cm v tl-v"></span>
+  <span class="cm h tr-h"></span><span class="cm v tr-v"></span>
+  <span class="cm h bl-h"></span><span class="cm v bl-v"></span>
+  <span class="cm h br-h"></span><span class="cm v br-v"></span>
+</section>
+
+</body>
+</html>

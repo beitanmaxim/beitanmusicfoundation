@@ -508,8 +508,10 @@
     .topnav.open a:nth-child(6){ transition-delay:.22s; } .topnav.open a:nth-child(7){ transition-delay:.26s; }
     .topnav .give{ margin-top:12px; }
     .nav-close{ display:block; position:absolute; top:26px; right:26px; width:36px; height:36px; background:none; border:0; cursor:pointer; }
-    .nav-close span{ position:absolute; top:50%; left:6px; right:6px; height:1.5px; background:var(--gold-bright); }
-    .nav-close span:nth-child(1){ transform:rotate(45deg); } .nav-close span:nth-child(2){ transform:rotate(-45deg); }
+    /* Stack both lines on the exact same center so the X crosses razor-sharp and symmetrical */
+    .nav-close span{ position:absolute !important; top:50% !important; left:50% !important; width:22px !important; height:1px !important; margin:0 !important; background:var(--gold-bright); }
+    .nav-close span:nth-child(1){ transform:translate(-50%,-50%) rotate(45deg) !important; }
+    .nav-close span:nth-child(2){ transform:translate(-50%,-50%) rotate(-45deg) !important; }
     body.menu-open{ overflow:hidden; }
     body.menu-open .topbar, body.menu-open .topbar.docked{ background:transparent; border-color:transparent; backdrop-filter:none; -webkit-backdrop-filter:none; }
     body.menu-open .navtoggle{ opacity:0; pointer-events:none; }
