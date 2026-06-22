@@ -418,8 +418,9 @@
   @media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; transition: none; } }
 
   @media (max-width: 820px){
-    .topnav { position: fixed; inset: 0; flex-direction: column; justify-content: center; gap: 26px;
-      background: var(--paper); padding: 90px 24px; opacity: 1; visibility: hidden; }
+    .topnav { position: fixed; inset: 0; z-index: 2000; flex-direction: column; justify-content: center; gap: 26px;
+      background: #13235A !important; padding: 90px 24px; opacity: 1; visibility: hidden; }
+    html[data-theme="light"] .topnav { background: #FAF8F5 !important; }
     .topnav.open { visibility: visible; }
     body.menu-open .topbar, body.menu-open .topbar.docked{ backdrop-filter:none; -webkit-backdrop-filter:none; }
     .topbar:not(.docked) .topnav a, .topnav a { color: var(--ink); font-size: 15px; }
@@ -430,6 +431,14 @@
     .navtoggle.open { color: var(--ink); }
     .navtoggle.open span:first-child { transform: translateY(8px) rotate(45deg); }
     .navtoggle.open span:last-child { transform: translateY(-8px) rotate(-45deg); }
+  }
+
+  @media (max-width: 760px){
+    /* Shift the hero photo's horizontal anchor so the cellist and the instrument
+       stay framed on tall smartphone viewports instead of being cropped out. */
+    .ex-hero .photo { background-position: 68% center; }
+    /* Elegant, proportional CTA buttons on phones */
+    .btn { padding: 12px 24px; font-size: 10.5px; }
   }
 </style>
 </head>

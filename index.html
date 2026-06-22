@@ -140,6 +140,16 @@
   .bm-logo .f .dot.d1{ top:.04em; right:.52em; }
   .bm-logo .f .dot.d2{ top:.34em; right:.28em; }
   .brand-link:hover .bm-logo{ transform:scale(1.04); }
+  /* Unified gold hover: the whole lockup — BM letters, italic f, and the brand title —
+     warms to a single radiant gold (#C5A059) when the brand link is hovered. */
+  .brand-link .bm-logo,.brand-link .bm-logo .bm,.brand-link .bm-logo .f,
+  .brand-link .brand-title,.brand-link .brand-title small{ transition:color .5s var(--ease); }
+  .brand-link:hover .bm-logo,
+  .brand-link:hover .bm-logo .bm{ color:#C5A059 !important; }
+  .brand-link:hover .bm-logo .f{ background:none; -webkit-background-clip:initial; background-clip:initial;
+    -webkit-text-fill-color:#C5A059; color:#C5A059 !important; }
+  .brand-link:hover .brand-title,
+  .brand-link:hover .brand-title small{ color:#C5A059 !important; }
   html[data-theme="light"] .topbar.docked .brand-link .bm-logo{ color:#13235A; }
   html[data-theme="light"] footer .brand-link .bm-logo{ color:#13235A; }
   footer .brand-title{ color:var(--ivory); }
@@ -437,10 +447,10 @@
   /* ════════════ MOBILE NAV ════════════ */
   @media (max-width:1024px){
     .topbar{ padding:0 26px; } .navtoggle{ display:block; }
-    .topnav{ position:fixed; inset:0; z-index:1200; flex-direction:column; justify-content:center; gap:12px;
-      background:#18306E; opacity:1; visibility:hidden; }
+    .topnav{ position:fixed; inset:0; z-index:2000; flex-direction:column; justify-content:center; gap:12px;
+      background:#13235A !important; opacity:1; visibility:hidden; }
     .topnav.open{ visibility:visible; }
-    html[data-theme="light"] .topnav{ background:#FAF8F5; }
+    html[data-theme="light"] .topnav{ background:#FAF8F5 !important; }
     html[data-theme="light"] .topnav a{ color:#13235A; }
     .topnav a{ font-family:var(--display); font-size:21px; letter-spacing:.16em; padding:12px 0; opacity:0; transform:translateY(12px); transition:opacity .5s var(--ease), transform .5s var(--ease), color .5s var(--ease); }
     .topnav a::after{ display:none; }
@@ -545,6 +555,8 @@
     .band{ padding:62px 0; }
     .mission .lead{ margin-bottom:38px; }
     .sec-head{ margin-bottom:34px; }
+    /* Elegant, proportional CTA buttons on phones */
+    .btn{ padding:12px 24px; font-size:10.5px; }
   }
 </style>
 </head>
