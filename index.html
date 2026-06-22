@@ -458,12 +458,17 @@
   /* ════════════ MOBILE NAV ════════════ */
   @media (max-width:1024px){
     .topbar{ padding:0 26px; } .navtoggle{ display:block; }
-    .topnav{ position:fixed; inset:0; z-index:9999 !important; flex-direction:column; justify-content:center; gap:12px;
+    .topnav{ position:fixed; inset:0; z-index:9999 !important; flex-direction:column; justify-content:flex-start; gap:12px;
+      padding-top:15vh !important;
       background:#13235A !important; opacity:1; visibility:hidden; }
     .topnav.open{ visibility:visible; }
     html[data-theme="light"] .topnav{ background:#FAF8F5 !important; }
     html[data-theme="light"] .topnav a{ color:#13235A; }
-    .topnav a{ font-family:var(--display); font-size:21px; letter-spacing:.16em; padding:12px 0; opacity:0; transform:translateY(12px); transition:opacity .5s var(--ease), transform .5s var(--ease), color .5s var(--ease); }
+    .topnav a{ font-family:var(--body) !important; font-size:21px; letter-spacing:.16em; padding:12px 0; opacity:0; transform:translateY(12px); transition:opacity .5s var(--ease), transform .5s var(--ease), color .5s var(--ease); }
+    /* Lock a single clean sans nav font across BOTH themes — no serif/display swap */
+    html[data-theme="light"] .topnav a, html[data-theme="dark"] .topnav a,
+    html[data-theme="light"] .topnav .give, html[data-theme="dark"] .topnav .give{
+      font-family:var(--body) !important; text-transform:uppercase; letter-spacing:.16em; font-weight:400; }
     .topnav a::after{ display:none; }
     .topnav.open a{ opacity:1; transform:none; }
     .topnav.open a:nth-child(2){ transition-delay:.06s; } .topnav.open a:nth-child(3){ transition-delay:.1s; }
@@ -488,9 +493,10 @@
       left:0 !important;
       width:100% !important;
       height:100vh !important;
-      padding-top:100px !important;
+      padding-top:15vh !important;
       display:flex !important;
       flex-direction:column !important;
+      justify-content:flex-start !important;
       align-items:center !important;
       overflow-y:auto !important;
       background:#13235A !important;
