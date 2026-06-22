@@ -6,7 +6,8 @@
       "Bash(node --check /tmp/idx.js)",
       "Bash(npm i *)",
       "Read(//Users/maxbeitan/node_modules/@html-graph/html-graph/**)",
-      "Read(//Users/maxbeitan/**)"
+      "Read(//Users/maxbeitan/**)",
+      "Bash(python3 -c \"import re,sys; s=open\\('exhibition-stradivari.html'\\).read\\(\\); print\\('braces balanced:', s.count\\('{'\\)==s.count\\('}'\\)\\); print\\('style blocks:', s.count\\('<style>'\\), s.count\\('</style>'\\)\\)\")"
     ]
   }
 }
